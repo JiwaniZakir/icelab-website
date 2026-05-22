@@ -143,7 +143,7 @@ jobs:
             [View the formatting diff](${{ steps.artifact-upload.outputs.artifact-url || 'in the Actions artifacts' }})
 
   # ── Markdown Lint ──────────────────────────────────────────────────────
- 
+
   # markdown:
   #   name: Markdown Lint
   #   runs-on: ubuntu-latest
