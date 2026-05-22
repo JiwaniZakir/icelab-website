@@ -1,0 +1,29 @@
+---
+layout: post
+title: "Test"
+date: 2026-05-21
+description: "Our latest SAR ADC design was presented at the International Solid-State Circuits Conference."
+tags: [conference, ADC, publications]
+categories: research
+related_posts: false
+---
+
+The ICE Lab presented our latest work on time-interleaved SAR ADC design at the IEEE International Solid-State Circuits Conference (ISSCC) 2026 in San Francisco.
+
+## Paper Summary
+
+Our paper, "A 12-bit 1-GS/s Time-Interleaved SAR ADC with Background Calibration in 28nm CMOS," demonstrates a novel background calibration technique that achieves state-of-the-art SNDR performance while maintaining low power consumption.
+
+### Key Results
+
+- **Resolution:** 12 bits
+- **Sampling Rate:** 1 GS/s
+- **SNDR:** 62.5 dB
+- **Power:** 45 mW
+- **Technology:** 28nm CMOS
+
+## Presentation
+
+Alex Chen presented the work during the Data Converter session. The presentation was well received, with several groups expressing interest in collaboration.
+
+We thank NSF for supporting this research through the CAREER award program.
