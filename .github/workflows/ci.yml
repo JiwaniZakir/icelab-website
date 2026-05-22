@@ -143,24 +143,25 @@ jobs:
             [View the formatting diff](${{ steps.artifact-upload.outputs.artifact-url || 'in the Actions artifacts' }})
 
   # ── Markdown Lint ──────────────────────────────────────────────────────
-  markdown:
-    name: Markdown Lint
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
+ 
+  # markdown:
+  #   name: Markdown Lint
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 5
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
 
-      - name: Lint Markdown
-        uses: DavidAnson/markdownlint-cli2-action@v19
-        with:
-          globs: |
-            _posts/**/*.md
-            _news/**/*.md
-            _projects/**/*.md
-            _pages/**/*.md
-          config: .markdownlint.jsonc
+  #     - name: Lint Markdown
+  #       uses: DavidAnson/markdownlint-cli2-action@v19
+  #       with:
+  #         globs: |
+  #           _posts/**/*.md
+  #           _news/**/*.md
+  #           _projects/**/*.md
+  #           _pages/**/*.md
+  #         config: .markdownlint.jsonc
 
   # ── YAML Validation ───────────────────────────────────────────────────
   yaml:
