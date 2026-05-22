@@ -11,14 +11,14 @@ Built with [al-folio](https://github.com/alshedivat/al-folio) and deployed autom
 
 ## Quick Reference
 
-| Action | How |
-|--------|-----|
-| Add a news item | Create `_news/YYYY-MM-DD-title.md` |
-| Add a blog post | Create `_posts/YYYY-MM-DD-title.md` |
-| Add a publication | Add BibTeX entry to `_bibliography/papers.bib` |
-| Add a project | Create `_projects/name.md` |
-| Update site config | Edit `_config.yml` |
-| Edit team info | Edit files in `_pages/` and `_data/` |
+| Action             | How                                            |
+| ------------------ | ---------------------------------------------- |
+| Add a news item    | Create `_news/YYYY-MM-DD-title.md`             |
+| Add a blog post    | Create `_posts/YYYY-MM-DD-title.md`            |
+| Add a publication  | Add BibTeX entry to `_bibliography/papers.bib` |
+| Add a project      | Create `_projects/name.md`                     |
+| Update site config | Edit `_config.yml`                             |
+| Edit team info     | Edit files in `_pages/` and `_data/`           |
 
 **All changes auto-deploy when merged to `main`.**
 
@@ -61,16 +61,16 @@ bundle exec jekyll serve
 
 ## CI/CD Pipeline
 
-| Workflow | Trigger | Purpose |
-|----------|---------|---------|
-| **Deploy** | Push to `main` | Build & deploy to GitHub Pages |
-| **CI** | Pull requests | Build check, link check, format check, BibTeX validation |
-| **Preview** | Pull requests | Build preview artifact for review |
-| **Citations** | Mon & Thu 6am UTC | Auto-update Google Scholar citation counts |
-| **Accessibility** | After deploy | Axe + Lighthouse audits |
-| **Stale** | Weekly Sunday | Auto-close inactive issues/PRs |
-| **Update TOCs** | Push to `main` | Auto-update markdown table of contents |
-| **Render CV** | CV file changes | Auto-generate PDF from YAML CV |
+| Workflow          | Trigger           | Purpose                                                  |
+| ----------------- | ----------------- | -------------------------------------------------------- |
+| **Deploy**        | Push to `main`    | Build & deploy to GitHub Pages                           |
+| **CI**            | Pull requests     | Build check, link check, format check, BibTeX validation |
+| **Preview**       | Pull requests     | Build preview artifact for review                        |
+| **Citations**     | Mon & Thu 6am UTC | Auto-update Google Scholar citation counts               |
+| **Accessibility** | After deploy      | Axe + Lighthouse audits                                  |
+| **Stale**         | Weekly Sunday     | Auto-close inactive issues/PRs                           |
+| **Update TOCs**   | Push to `main`    | Auto-update markdown table of contents                   |
+| **Render CV**     | CV file changes   | Auto-generate PDF from YAML CV                           |
 
 ## Contributing
 

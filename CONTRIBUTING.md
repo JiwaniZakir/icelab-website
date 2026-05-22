@@ -7,17 +7,18 @@ make changes smoothly.
 
 ### Adding Content (No Coding Required)
 
-| Content Type | Where to Add | File Format |
-|-------------|-------------|-------------|
-| News item | `_news/` | `YYYY-MM-DD-title.md` |
-| Blog post | `_posts/` | `YYYY-MM-DD-title.md` |
-| Project | `_projects/` | `name.md` |
-| Publication | `_bibliography/papers.bib` | BibTeX entry |
-| Team member info | `_pages/` | Markdown |
+| Content Type     | Where to Add               | File Format           |
+| ---------------- | -------------------------- | --------------------- |
+| News item        | `_news/`                   | `YYYY-MM-DD-title.md` |
+| Blog post        | `_posts/`                  | `YYYY-MM-DD-title.md` |
+| Project          | `_projects/`               | `name.md`             |
+| Publication      | `_bibliography/papers.bib` | BibTeX entry          |
+| Team member info | `_pages/`                  | Markdown              |
 
 ### Workflow
 
 1. **Create a branch** from `main`:
+
    ```bash
    git checkout -b content/your-change-name
    ```
@@ -25,12 +26,14 @@ make changes smoothly.
 2. **Make your changes** (add/edit markdown files)
 
 3. **Test locally** (recommended):
+
    ```bash
    docker compose pull && docker compose up
    # Visit http://localhost:8080
    ```
 
 4. **Commit and push**:
+
    ```bash
    git add .
    git commit -m "content: add news about new paper"
@@ -51,16 +54,17 @@ make changes smoothly.
 
 Use prefixes to categorize your commits:
 
-| Prefix | Use For |
-|--------|---------|
+| Prefix     | Use For                                            |
+| ---------- | -------------------------------------------------- |
 | `content:` | Adding/editing news, posts, projects, publications |
-| `feat:` | New features or pages |
-| `fix:` | Bug fixes |
-| `style:` | CSS/design changes |
-| `chore:` | Config, dependencies, CI/CD |
-| `docs:` | Documentation updates |
+| `feat:`    | New features or pages                              |
+| `fix:`     | Bug fixes                                          |
+| `style:`   | CSS/design changes                                 |
+| `chore:`   | Config, dependencies, CI/CD                        |
+| `docs:`    | Documentation updates                              |
 
 Examples:
+
 ```
 content: add NeurIPS 2026 paper to publications
 content: add Jane Doe as new PhD student
@@ -82,7 +86,7 @@ inline: true
 related_posts: false
 ---
 
-Your news text here. You can use **bold**, *italic*, and [links](https://example.com).
+Your news text here. You can use **bold**, _italic_, and [links](https://example.com).
 ```
 
 ## Adding a Publication

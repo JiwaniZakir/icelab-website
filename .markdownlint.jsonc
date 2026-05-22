@@ -1,5 +1,5 @@
 {
-  "extends": "markdownlint/style/relaxed",
+  "default": true,
   "MD013": false,
   "MD033": false,
   "MD041": false,
@@ -7,5 +7,11 @@
   "MD024": { "siblings_only": true },
   "MD036": false,
   "MD051": false,
-  "MD053": false
+  "MD053": false,
+  "MD009": false,
+  "MD010": false,
+  "MD012": false,
+  "MD022": false,
+  "MD025": false,
+  "MD032": false,
 }
