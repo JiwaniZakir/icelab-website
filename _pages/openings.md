@@ -14,12 +14,14 @@ We are currently recruiting for the following positions:
 ### PhD Students (Fall 2027)
 
 We are looking for motivated PhD students interested in:
+
 - Analog & mixed-signal IC design
 - Digital VLSI and hardware accelerators
 - RF and millimeter-wave circuits
 - Emerging circuit technologies
 
 **Requirements:**
+
 - BS or MS in Electrical Engineering, Computer Engineering, or related field
 - Strong background in circuit design and/or VLSI
 - Experience with Cadence Virtuoso, Synopsys tools, or FPGA design is a plus
@@ -43,4 +45,4 @@ Please send an email to [icelab@drexel.edu](mailto:icelab@drexel.edu) with:
 4. A brief statement of your research interests (1 paragraph)
 5. Contact information for 2-3 references
 
-*We review applications on a rolling basis.*
+_We review applications on a rolling basis._

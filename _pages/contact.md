@@ -43,6 +43,7 @@ We are always looking for talented and motivated students at all levels:
 - **Undergraduate Researchers:** Drexel co-op students and undergraduates interested in gaining research experience are welcome to reach out.
 
 Please include the following in your email:
+
 1. Your CV/resume
 2. A brief description of your research interests
 3. Relevant coursework or experience
