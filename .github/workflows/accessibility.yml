@@ -1,18 +1,23 @@
 name: Accessibility & Performance Audit
 
 on:
-  # Run after successful deploy
   workflow_run:
     workflows: [Deploy site]
     types: [completed]
 
-  # Allow manual trigger with custom URL path
   workflow_dispatch:
     inputs:
       url_path:
         description: "URL path to audit (e.g. blog/ or publications/)"
         required: false
         default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: accessibility
+  cancel-in-progress: true
 
 jobs:
   audit:
@@ -45,7 +50,6 @@ jobs:
           npm install -g purgecss
           purgecss -c purgecss.config.js
 
-      # Axe accessibility testing
       - name: Get Chrome version
         run: |
           CHROMIUM_VERSION=$(wget -qO- https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_STABLE | cut -d. -f1)
