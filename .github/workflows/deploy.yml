@@ -118,9 +118,11 @@ jobs:
             --user-agent 'curl/7.54'
             --exclude-path README.md
             --exclude-path RESEARCH_REPORT.md
+            --exclude-path CUSTOMIZE.md
+            --exclude-path FAQ.md
+            --exclude-path INSTALL.md
             --exclude-path _pages/404.md
             --exclude-path _pages/blog.md
-            --exclude-path _pages/about_einstein.md
             --exclude '%7B%7B'
             --exclude 'reddit\.com'
             --exclude 'unsplash\.com'
