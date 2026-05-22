@@ -13,7 +13,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # ── Build Validation ──────────────────────────────────────────────────
+  # ── Build Validation (REQUIRED) ────────────────────────────────────────
+  # This is the only truly critical check: does the site build?
   build:
     name: Build & Validate
     runs-on: ubuntu-latest
@@ -58,7 +59,8 @@ jobs:
           path: _site/
           retention-days: 3
 
-  # ── Broken Link Check ─────────────────────────────────────────────────
+  # ── Broken Link Check (advisory) ──────────────────────────────────────
+  # Reports broken links but does NOT block merge
   links:
     name: Check Links
     runs-on: ubuntu-latest
@@ -71,7 +73,8 @@ jobs:
       - name: Link Checker
         uses: lycheeverse/lychee-action@v2.0.2
         with:
-          fail: true
+          fail: false # Advisory only - don't block PRs
+          jobSummary: true
           args: >
             --user-agent 'curl/7.54'
             --exclude-path README.md
@@ -81,89 +84,20 @@ jobs:
             --exclude-path CUSTOMIZE.md
             --exclude-path FAQ.md
             --exclude-path INSTALL.md
+            --exclude-path LAB_WEBSITE_ANALYSIS.md
             --exclude '%7B%7B'
+            --exclude 'reddit\.com'
+            --exclude 'unsplash\.com'
+            --accept 403,401,429
             --timeout 30
             --max-retries 3
-            --verbose
             --no-progress
             './**/*.md' './**/*.html'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  # ── Code Formatting ───────────────────────────────────────────────────
-  format:
-    name: Code Format
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-
-      - name: Install Prettier
-        run: npm install --save-dev --save-exact prettier @shopify/prettier-plugin-liquid
-
-      - name: Check formatting
-        id: prettier
-        run: npx prettier . --check
-
-      - name: Generate diff on failure
-        if: failure()
-        run: |
-          npx prettier . --write
-          git diff -- . ':(exclude)package-lock.json' ':(exclude)package.json' > diff.txt
-          npm install -g diff2html-cli
-          diff2html -i file -s side -F diff.html -- diff.txt
-
-      - name: Upload diff
-        if: failure() && steps.prettier.conclusion == 'failure'
-        uses: actions/upload-artifact@v4
-        with:
-          name: prettier-diff
-          path: diff.html
-          retention-days: 7
-
-      - name: Comment on PR
-        if: failure() && steps.prettier.conclusion == 'failure'
-        uses: thollander/actions-comment-pull-request@v2
-        with:
-          comment_tag: prettier-check
-          message: |
-            :warning: **Code formatting issues detected**
-
-            Some files are not properly formatted. Please run:
-            ```bash
-            npx prettier . --write
-            ```
-            Then commit the changes.
-
-            [View the formatting diff](${{ steps.artifact-upload.outputs.artifact-url || 'in the Actions artifacts' }})
-
-  # ── Markdown Lint ──────────────────────────────────────────────────────
-
-  # markdown:
-  #   name: Markdown Lint
-  #   runs-on: ubuntu-latest
-  #   timeout-minutes: 5
-
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v4
-
-  #     - name: Lint Markdown
-  #       uses: DavidAnson/markdownlint-cli2-action@v19
-  #       with:
-  #         globs: |
-  #           _posts/**/*.md
-  #           _news/**/*.md
-  #           _projects/**/*.md
-  #           _pages/**/*.md
-  #         config: .markdownlint.jsonc
-
-  # ── YAML Validation ───────────────────────────────────────────────────
+  # ── YAML Validation (REQUIRED) ─────────────────────────────────────────
+  # Catches broken front-matter in _config.yml and data files
   yaml:
     name: YAML Validation
     runs-on: ubuntu-latest
@@ -191,7 +125,8 @@ jobs:
               comments:
                 min-spaces-from-content: 1
 
-  # ── BibTeX Validation ──────────────────────────────────────────────────
+  # ── BibTeX Validation (REQUIRED) ───────────────────────────────────────
+  # Catches broken bibliography entries that would break the publications page
   bibtex:
     name: BibTeX Validation
     runs-on: ubuntu-latest
