@@ -4,11 +4,7 @@ title: research
 permalink: /research/
 description: Research areas and ongoing projects at the ICE Lab.
 nav: true
-nav_order: 3
----
-
-Our research program spans multiple areas within integrated circuits and electronics, from foundational device-level work to system-level innovation.
-
+nav_order: 4
 ---
 
 ## Analog & Mixed-Signal IC Design
@@ -18,7 +14,8 @@ Our research program spans multiple areas within integrated circuits and electro
 
 Design of high-performance analog and mixed-signal integrated circuits including data converters (ADCs/DACs), phase-locked loops (PLLs), voltage references, and sensor interface circuits. Our work targets applications in communications, biomedical sensing, and IoT.
 
-**Key topics:** SAR ADCs, delta-sigma modulators, low-noise amplifiers, bandgap references, power management ICs
+> **Key topics:** SAR ADCs, delta-sigma modulators, low-noise amplifiers, bandgap references, power management ICs
+{: .block-tip}
 
 </div>
 <div class="col-sm-4 mt-3 mt-md-0">
@@ -38,7 +35,8 @@ Design of high-performance analog and mixed-signal integrated circuits including
 
 Design and implementation of digital VLSI systems with emphasis on energy efficiency, high throughput, and domain-specific acceleration. We develop custom ASIC and FPGA designs for machine learning inference, signal processing, and cryptographic applications.
 
-**Key topics:** Hardware accelerators, low-power design, FPGA prototyping, RTL design, physical design flow
+> **Key topics:** Hardware accelerators, low-power design, FPGA prototyping, RTL design, physical design flow
+{: .block-tip}
 
 </div>
 </div>
@@ -52,7 +50,8 @@ Design and implementation of digital VLSI systems with emphasis on energy effici
 
 Research in radio-frequency and millimeter-wave integrated circuits for next-generation wireless communications, radar systems, and imaging applications. Our work covers the full signal chain from antenna interfaces to baseband processing.
 
-**Key topics:** 5G/6G transceivers, power amplifiers, mmWave beamforming, radar front-ends, frequency synthesizers
+> **Key topics:** 5G/6G transceivers, power amplifiers, mmWave beamforming, radar front-ends, frequency synthesizers
+{: .block-tip}
 
 </div>
 <div class="col-sm-4 mt-3 mt-md-0">
@@ -72,7 +71,8 @@ Research in radio-frequency and millimeter-wave integrated circuits for next-gen
 
 Exploration of novel circuit paradigms and emerging device technologies, including cryogenic electronics for quantum computing interfaces, neuromorphic computing architectures, and circuits based on novel semiconductor materials.
 
-**Key topics:** Cryogenic CMOS, neuromorphic circuits, beyond-CMOS devices, in-memory computing, chiplet integration
+> **Key topics:** Cryogenic CMOS, neuromorphic circuits, beyond-CMOS devices, in-memory computing, chiplet integration
+{: .block-tip}
 
 </div>
 </div>

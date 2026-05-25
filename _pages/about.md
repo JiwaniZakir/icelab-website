@@ -15,7 +15,7 @@ profile:
     <p>3140 Market Street</p>
     <p>Philadelphia, PA 19104</p>
 
-selected_papers: true
+selected_papers: false
 social: false
 
 announcements:
@@ -31,13 +31,8 @@ Welcome to the **ICE Lab** (Integrated Circuits & Electronics Laboratory) at Dre
 
 ## Research Focus
 
-Our lab works at the intersection of:
-
-- **Analog & Mixed-Signal IC Design** -- high-performance data converters, PLLs, and sensor interfaces
-- **Digital VLSI Design** -- low-power architectures, hardware accelerators, and ASIC design
-- **RF & Millimeter-Wave Circuits** -- communication systems, radar, and imaging
-- **Emerging Technologies** -- novel device integration, cryogenic electronics, and neuromorphic computing
+We work across four core areas: **analog & mixed-signal IC design**, **digital VLSI**, **RF & millimeter-wave circuits**, and **emerging technologies**. [Learn more about our research areas]({{ '/research/' | relative_url }}).
 
 ## Join Us
 
-We are always looking for motivated **PhD students**, **MS students**, and **undergraduate researchers** to join our team. If you are interested in integrated circuits and electronics research, please check our [openings](/icelab-website/openings/) page or [contact us](/icelab-website/contact/).
+We are recruiting **PhD students**, **MS students**, and **undergraduate researchers**. [Contact us]({{ '/contact/' | relative_url }}) to learn more.

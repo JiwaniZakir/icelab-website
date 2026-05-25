@@ -3,7 +3,7 @@
  ******************************************************************************/
 
 footer.fixed-bottom {
-  background-color: var(--global-footer-bg-color);
+  background-color: var(--md-primary);
   font-size: 0.75rem;
 
   .container {
@@ -17,7 +17,7 @@ footer.fixed-bottom {
     color: var(--global-footer-link-color);
 
     &:hover {
-      color: var(--global-theme-color);
+      color: var(--md-secondary-300);
       text-decoration: none;
     }
   }

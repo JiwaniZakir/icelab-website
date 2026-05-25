@@ -27,7 +27,9 @@ Philadelphia, PA 19104
 </div>
 <div class="col-sm-6">
 
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3058.5!2d-75.19!3d39.955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMznCsDU3JzE4LjAiTiA3NcKwMTEnMjQuMCJX!5e0!3m2!1sen!2sus!4v1600000000000!5m2!1sen!2sus" width="100%" height="300" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<div class="card rounded z-depth-1 overflow-hidden">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3058.5!2d-75.19!3d39.955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMznCsDU3JzE4LjAiTiA3NcKwMTEnMjQuMCJX!5e0!3m2!1sen!2sus!4v1600000000000!5m2!1sen!2sus" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
 
 </div>
 </div>
@@ -36,18 +38,39 @@ Philadelphia, PA 19104
 
 ## Prospective Students
 
-We are always looking for talented and motivated students at all levels:
+We are currently recruiting for the following positions:
 
-- **PhD Students:** We accept PhD students through the [Drexel ECE graduate program](https://drexel.edu/engineering/academics/departments/electrical-computer-engineering/). Please mention your interest in the ICE Lab in your application.
-- **MS Students:** If you are a current Drexel MS student interested in thesis research, please email the PI with your CV and research interests.
-- **Undergraduate Researchers:** Drexel co-op students and undergraduates interested in gaining research experience are welcome to reach out.
+### PhD Students (Fall 2027)
 
-Please include the following in your email:
+We are looking for motivated PhD students interested in:
 
-1. Your CV/resume
-2. A brief description of your research interests
-3. Relevant coursework or experience
-4. (For PhD applicants) 2-3 representative publications, if available
+- Analog & mixed-signal IC design
+- Digital VLSI and hardware accelerators
+- RF and millimeter-wave circuits
+- Emerging circuit technologies
+
+**Requirements:**
+
+- BS or MS in Electrical Engineering, Computer Engineering, or related field
+- Strong background in circuit design and/or VLSI
+- Experience with Cadence Virtuoso, Synopsys tools, or FPGA design is a plus
+- GRE scores (recommended but not required)
+
+**Funding:** Full tuition waiver + competitive stipend + health insurance
+
+### Undergraduate Researchers
+
+Drexel undergraduate students interested in IC design research during co-op or academic terms are welcome to apply. This is a great opportunity to gain hands-on experience with chip design before pursuing graduate studies.
+
+Please send an email to [icelab@drexel.edu](mailto:icelab@drexel.edu) with:
+
+1. **Subject line:** `[ICE Lab Application] Your Name - Position`
+2. Your CV/resume (PDF)
+3. Unofficial transcripts
+4. A brief statement of your research interests (1 paragraph)
+5. Contact information for 2-3 references
+
+_We review applications on a rolling basis._
 
 ---
 

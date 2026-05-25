@@ -1,0 +1,269 @@
+/*******************************************************************************
+ * ICE Lab — section-level Material Design branding
+ ******************************************************************************/
+
+// Page headers & main headings
+.post-header {
+  .post-title {
+    color: var(--md-heading-color);
+  }
+
+  .post-description,
+  .desc {
+    color: var(--md-text-secondary);
+  }
+}
+
+.post .post-title,
+article h1 {
+  color: var(--md-heading-color);
+}
+
+article h2 {
+  color: var(--md-heading-color);
+  border-bottom: 1px solid var(--md-outline-variant);
+  padding-bottom: 0.35rem;
+  margin-top: 2rem;
+}
+
+article h3,
+article h4 {
+  color: var(--md-primary-700);
+}
+
+html[data-theme="dark"] {
+  article h3,
+  article h4 {
+    color: var(--md-primary-200);
+  }
+}
+
+// Content cards (team, projects, blog)
+.card {
+  background-color: var(--md-surface);
+  border: 1px solid var(--md-outline);
+
+  &.hoverable {
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease,
+      transform 0.2s ease;
+
+    &:hover {
+      border-color: var(--md-secondary);
+      box-shadow: 0 4px 12px rgba(7, 41, 77, 0.08);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.projects {
+  h2.category {
+    color: var(--md-heading-color);
+    border-bottom: 2px solid var(--md-secondary);
+    border-top: none;
+    text-align: left;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding-top: 1.5rem;
+    padding-bottom: 0.4rem;
+  }
+
+  a:hover .card-title {
+    color: var(--md-primary-600);
+  }
+}
+
+html[data-theme="dark"] {
+  .projects a:hover .card-title {
+    color: var(--md-secondary);
+  }
+
+  .card.hoverable:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+}
+
+// News table on homepage
+.news {
+  th {
+    color: var(--md-text-secondary);
+    font-weight: 500;
+    font-size: 0.85rem;
+  }
+
+  td {
+    color: var(--md-text-primary);
+  }
+
+  a {
+    color: var(--md-primary);
+
+    &:hover {
+      color: var(--md-primary-600);
+    }
+  }
+}
+
+html[data-theme="dark"] {
+  .news a {
+    color: var(--md-primary-300);
+
+    &:hover {
+      color: var(--md-secondary);
+    }
+  }
+}
+
+// Publications
+.publications {
+  h1 {
+    color: var(--md-heading-color);
+  }
+
+  h2.bibliography {
+    color: var(--md-heading-color);
+    border-top: 1px solid var(--md-outline);
+    border-bottom: 2px solid var(--md-secondary);
+    text-align: left;
+  }
+
+  ol.bibliography li .abbr abbr {
+    background-color: var(--md-primary);
+    color: var(--md-on-primary) !important;
+  }
+
+  ol.bibliography li .abbr .award {
+    color: var(--md-secondary-800) !important;
+    border: 1px solid var(--md-secondary);
+    background-color: var(--md-secondary-container);
+  }
+}
+
+// Blog / news archive
+.header-bar h1 {
+  color: var(--md-heading-color);
+}
+
+.header-bar h2,
+.post-description,
+.post-meta,
+.tag-category-list li {
+  color: var(--md-text-secondary);
+}
+
+.post-list .post-title a:hover {
+  color: var(--md-primary-600);
+}
+
+// Callout boxes (research page key topics)
+blockquote.block-tip {
+  background-color: var(--md-primary-container);
+  border-left-color: var(--md-primary);
+  color: var(--md-on-primary-container);
+}
+
+blockquote.block-warning {
+  background-color: var(--md-secondary-container);
+  border-left-color: var(--md-secondary);
+}
+
+// Main content area sits on surface over background
+.container[role="main"] {
+  background-color: var(--md-surface);
+  border: 1px solid var(--md-outline-variant);
+  border-radius: 4px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-bottom: 2rem;
+  margin-top: 1.5rem !important;
+  box-shadow: 0 1px 4px rgba(7, 41, 77, 0.04);
+}
+
+body.fixed-top-nav .container[role="main"] {
+  margin-top: 1.75rem !important;
+}
+
+html[data-theme="dark"] {
+  .container[role="main"] {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  }
+}
+
+// About page subtitle
+.post-header .desc strong {
+  color: var(--md-heading-color);
+}
+
+// Links in body text
+.post article a:not(.btn):not(.card):not(.news-title) {
+  color: var(--md-primary-600);
+
+  &:hover {
+    color: var(--md-primary-800);
+  }
+}
+
+html[data-theme="dark"] {
+  .post article a:not(.btn):not(.card):not(.news-title) {
+    color: var(--md-primary-300);
+
+    &:hover {
+      color: var(--md-secondary);
+    }
+  }
+}
+
+// Scroll progress bar — gold accent on navy track
+progress::-webkit-progress-value,
+progress::-moz-progress-bar,
+.progress-bar {
+  background-color: var(--md-secondary);
+}
+
+// Search modal accent
+ninja-keys {
+  --ninja-accent-color: var(--md-primary);
+}
+
+// Footer
+footer.fixed-bottom {
+  background-color: var(--md-primary);
+  border-top: 3px solid var(--md-secondary);
+
+  a:hover {
+    color: var(--md-secondary) !important;
+  }
+}
+
+footer.sticky-bottom {
+  border-top: 1px solid var(--md-outline);
+  color: var(--md-text-secondary);
+}
+
+// Muted / disabled text utility
+.text-muted {
+  color: var(--md-text-secondary) !important;
+}
+
+// Form inputs (bib search, contact if added)
+.form-control,
+input[type="text"],
+input[type="search"],
+textarea,
+select {
+  background-color: var(--md-input-bg);
+  border-color: var(--md-outline);
+  color: var(--md-text-primary);
+
+  &:focus {
+    border-color: var(--md-primary-400);
+    box-shadow: 0 0 0 0.15rem rgba(7, 41, 77, 0.15);
+  }
+
+  &::placeholder {
+    color: var(--md-text-disabled);
+  }
+}

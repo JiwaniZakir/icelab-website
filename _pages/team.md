@@ -31,7 +31,13 @@ Meet the researchers and students driving innovation at the ICE Lab.
       {% else %}
         <h2 class="category">{{ category | capitalize }}</h2>
       {% endif %}
-      {% if page.horizontal %}
+      {% if category == "faculty" %}
+        <div class="row row-cols-1">
+          {% for project in sorted_members %}
+            {% include projects_horizontal.liquid %}
+          {% endfor %}
+        </div>
+      {% elsif page.horizontal %}
         <div class="container">
           <div class="row row-cols-1 row-cols-md-2">
             {% for project in sorted_members %}
@@ -40,7 +46,7 @@ Meet the researchers and students driving innovation at the ICE Lab.
           </div>
         </div>
       {% else %}
-        <div class="grid">
+        <div class="row row-cols-1 row-cols-md-3">
           {% for project in sorted_members %}
             {% include projects.liquid %}
           {% endfor %}
@@ -48,5 +54,14 @@ Meet the researchers and students driving innovation at the ICE Lab.
       {% endif %}
     {% endif %}
   {% endfor %}
+
+{% else %}
+
+{% assign sorted_members = site.team | sort: "importance" %}
+  <div class="row row-cols-1 row-cols-md-3">
+    {% for project in sorted_members %}
+      {% include projects.liquid %}
+    {% endfor %}
+  </div>
 {% endif %}
 </div>

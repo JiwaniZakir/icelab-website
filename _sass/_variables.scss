@@ -9,20 +9,71 @@
 $red-color: #ff3636 !default;
 $red-color-dark: #b71c1c !default;
 $orange-color: #f29105 !default;
-$blue-color: #0076df !default;
-$blue-color-dark: #00369f !default;
-$cyan-color: #2698ba !default;
-$light-cyan-color: color.adjust($cyan-color, $lightness: 25%);
+// Drexel Material Design palette — ICE Lab brand
+$md-primary-50: #eef6fd !default;
+$md-primary-100: #d8eafa !default;
+$md-primary-200: #b6d7f2 !default;
+$md-primary-300: #85bbe7 !default;
+$md-primary-400: #559dda !default;
+$md-primary-500: #1d7dce !default;
+$md-primary-600: #1768ae !default;
+$md-primary-700: #11528e !default;
+$md-primary-800: #0b3d6e !default;
+$md-primary-900: #07294d !default;
+
+$md-secondary-50: #fffbea !default;
+$md-secondary-100: #fff3bf !default;
+$md-secondary-200: #ffe680 !default;
+$md-secondary-300: #ffd83d !default;
+$md-secondary-400: #ffce12 !default;
+$md-secondary-500: #fec500 !default;
+$md-secondary-600: #d9a800 !default;
+$md-secondary-700: #ad8500 !default;
+$md-secondary-800: #806300 !default;
+$md-secondary-900: #4d3b00 !default;
+
+$md-primary: #07294d !default;
+$md-on-primary: #ffffff !default;
+$md-primary-container: #d8eafa !default;
+$md-on-primary-container: #001d36 !default;
+
+$md-secondary: #fec500 !default;
+$md-on-secondary: #1f1800 !default;
+$md-secondary-container: #fff0b3 !default;
+$md-on-secondary-container: #241a00 !default;
+
+$md-background: #f2f2f2 !default;
+$md-on-background: #263238 !default;
+
+$md-surface: #ffffff !default;
+$md-on-surface: #263238 !default;
+$md-surface-variant: #f8f8f8 !default;
+$md-on-surface-variant: #7f858c !default;
+
+$md-outline: #dadada !default;
+$md-outline-variant: #e8e8e8 !default;
+
+$md-text-primary: #263238 !default;
+$md-text-secondary: #7f858c !default;
+$md-text-disabled: #a9a9a9 !default;
+
+// Map legacy theme tokens to Drexel palette
+$blue-color: $md-primary !default;
+$blue-color-dark: $md-primary-800 !default;
+$purple-color: $md-primary !default;
+$light-purple-color: $md-primary-300 !default;
+$cyan-color: $md-primary-400 !default;
+$light-cyan-color: $md-primary-300 !default;
+$yellow-color: $md-secondary !default;
+
+$code-bg-color-light: rgba($md-primary, 0.06);
 $green-color: #00ab37 !default;
 $green-color-lime: #b7d12a !default;
 $green-color-dark: #009f06 !default;
 $green-color-light: #ddffdd !default;
 $green-color-bright: #11d68b !default;
-$purple-color: #b509ac !default;
-$light-purple-color: color.adjust($purple-color, $lightness: 25%);
 $pink-color: #f92080 !default;
 $pink-color-light: #ffdddd !default;
-$yellow-color: #efcc00 !default;
 
 $grey-color: #828282 !default;
 $grey-color-light: color.adjust($grey-color, $lightness: 40%);
@@ -34,8 +85,7 @@ $black-color: #000000 !default;
 
 // Theme colors
 
-$code-bg-color-light: rgba($purple-color, 0.05);
-$code-bg-color-dark: #2c3237 !default;
+$code-bg-color-dark: #0b3d6e !default;
 
 // Font awesome location
 $fa-font-path: "../webfonts";
