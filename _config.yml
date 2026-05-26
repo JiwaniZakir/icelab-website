@@ -13,9 +13,7 @@ description: >
   ICE Lab (Integrated Circuits & Electronics Design and Analysis Laboratory) at Drexel University.
   Research in 3-D integrated circuits, hardware security, near-threshold circuits, and design for trust.
 footer_text: >
-  &copy; ICE Lab, Drexel University.
-  Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
-  Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+  &copy; ICE Lab, Drexel University. All rights reserved.
 keywords: integrated-circuits, 3d-ics, hardware-security, design-for-trust, near-threshold, VLSI, drexel-university, research-lab
 lang: en
 icon: ⚡ # the emoji used as the favicon
@@ -187,6 +185,8 @@ exclude:
   - INSTALL.md
   - LICENSE
   - lighthouse_results/
+  - assets/html/
+  - assets/bibliography/
   - package.json
   - package-lock.json
   - _pages/about_einstein.md

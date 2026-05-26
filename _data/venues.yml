@@ -1,9 +1,40 @@
-"AJP":
-  url: https://aapt.scitation.org/journal/ajp
-  color: "#00369f"
-
-"PhysRev":
-  url: https://journals.aps.org/
-
-"Vision":
-  color: "#009f36"
+"ISSCC":
+  url: https://isscc.org/
+  color: "#07294D"
+"JSSC":
+  url: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=4
+  color: "#07294D"
+"TVLSI":
+  url: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=92
+  color: "#07294D"
+"TCAS":
+  url: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=31
+  color: "#07294D"
+"CICC":
+  url: https://ieeexplore.ieee.org/xpl/conhome/1000420/all-proceedings
+  color: "#07294D"
+"ISCAS":
+  url: https://ieeexplore.ieee.org/xpl/conhome/1000447/all-proceedings
+  color: "#07294D"
+"DAC":
+  url: https://www.dac.com/
+  color: "#07294D"
+"ICCD":
+  url: https://ieeexplore.ieee.org/xpl/conhome/1000421/all-proceedings
+  color: "#07294D"
+"GLSVLSI":
+  url: https://www.glsvlsi.org/
+  color: "#07294D"
+"GOMACTech":
+  color: "#FFC627"
+"VLSI":
+  color: "#07294D"
+"ICCAD":
+  url: https://iccad.com/
+  color: "#07294D"
+"ISQED":
+  color: "#07294D"
+"MLCAD":
+  color: "#07294D"
+"VMIC":
+  color: "#07294D"

@@ -7,4 +7,4 @@ importance: 8
 category: phd
 ---
 
-Amit Varde is a member of the ICE Lab at Drexel University.
+Amit Varde is a Ph.D. student in the ICE Lab at Drexel University. His research interests include machine learning for EDA, analog circuit design automation, and hardware security.

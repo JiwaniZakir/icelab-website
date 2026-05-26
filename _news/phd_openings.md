@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-We are recruiting **PhD students** interested in 3-D ICs, hardware security, and energy-efficient circuit design. See our [contact page]({{ '/contact/' | relative_url }}) for details.
+We are recruiting **PhD students** interested in 3-D ICs, hardware security, and energy-efficient circuit design. See our [contact page](/icelab-website/contact/) for details.

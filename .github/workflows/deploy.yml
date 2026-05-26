@@ -30,8 +30,9 @@ on:
       - "!CONTRIBUTING.md"
       - "!RESEARCH_REPORT.md"
       - "!LICENSE"
+      - "bin/**"
+      - "purgecss.config.js"
 
-  # Allow manual deploys
   workflow_dispatch:
 
 permissions:
@@ -95,7 +96,6 @@ jobs:
           clean: true
           single-commit: true
 
-  # Post-deploy link check on the live site
   post-deploy-check:
     needs: build
     runs-on: ubuntu-latest
@@ -103,34 +103,31 @@ jobs:
     if: github.event_name == 'push'
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
       - name: Wait for GitHub Pages propagation
-        run: sleep 30
+        run: sleep 45
 
       - name: Check deployed site for broken links
         uses: lycheeverse/lychee-action@v2.0.2
         with:
-          fail: false # Report only, don't fail the deploy
+          fail: false
           args: >
             --user-agent 'curl/7.54'
-            --exclude-path README.md
-            --exclude-path RESEARCH_REPORT.md
-            --exclude-path CUSTOMIZE.md
-            --exclude-path FAQ.md
-            --exclude-path INSTALL.md
-            --exclude-path _pages/404.md
-            --exclude-path _pages/blog.md
-            --exclude '%7B%7B'
-            --exclude 'reddit\.com'
-            --exclude 'unsplash\.com'
-            --exclude 'intmath\.com'
-            --exclude 'conda\.io'
-            --accept 403,401
+            --exclude 'ece\.drexel\.edu'
+            --exclude 'research\.coe\.drexel\.edu'
+            --exclude 'scholar\.google\.com'
+            --accept 403,401,429
             --timeout 30
             --max-retries 3
             --no-progress
-            './**/*.md' './**/*.html'
+            --max-concurrency 4
+            --base https://jiwanizakir.github.io/icelab-website/
+            /
+            /team/
+            /projects/
+            /research/
+            /publications/
+            /contact/
+            /blog/
+            /news/
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

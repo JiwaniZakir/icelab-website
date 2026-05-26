@@ -7,4 +7,4 @@ importance: 6
 category: phd
 ---
 
-Ashish Sharma is a member of the ICE Lab at Drexel University.
+Ashish Sharma is a Ph.D. student in the ICE Lab at Drexel University. His research interests include hardware security, obfuscation, and secure integrated circuit design methodologies.
