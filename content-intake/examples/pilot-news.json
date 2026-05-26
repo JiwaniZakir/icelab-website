@@ -1,9 +1,13 @@
 {
   "type": "news_post",
   "date": "2099-01-15",
-  "title": "Pilot Test — Content Agent News Post",
+  "title": "Pilot Test \u2014 Content Agent News Post",
   "slug": "pilot-content-agent-news",
   "body_markdown": "This is a **pilot test** intake for the ICE Lab content agent. Do not merge to main.",
   "show_on_homepage": false,
-  "tags": ["news", "pilot"]
+  "tags": [
+    "news",
+    "pilot"
+  ],
+  "description": "Pilot Test \u2014 Content Agent News Post"
 }
