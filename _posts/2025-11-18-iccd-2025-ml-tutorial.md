@@ -2,6 +2,8 @@
 layout: post
 title: ICCD 2025 Tutorial on Machine Learning for Automated Physical Design
 date: 2025-11-18
+inline: true
+related_posts: false
 description: Prof. Ioannis Savidis presented an ICCD 2025 tutorial on machine learning for automated physical design.
 tags: news
 ---

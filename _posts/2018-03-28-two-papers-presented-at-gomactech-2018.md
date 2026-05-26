@@ -2,6 +2,8 @@
 layout: post
 title: Two Papers Presented at GOMACTech 2018
 date: 2018-03-28
+inline: true
+related_posts: false
 description: Prof. Ioannis Savidis presented two ICE Lab papers at the Government Microcircuit Applications & Critical Technology Conference in Miami, Florida held on March 
 tags: news
 ---

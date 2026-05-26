@@ -2,6 +2,8 @@
 layout: post
 title: ISCAS 2025 Tutorial on ML-AI Techniques for Analog EDA
 date: 2025-05-24
+inline: true
+related_posts: false
 description: Prof. Ioannis Savidis presented an ISCAS 2025 tutorial on emerging machine learning techniques for analog EDA.
 tags: news
 ---

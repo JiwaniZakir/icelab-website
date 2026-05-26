@@ -154,13 +154,9 @@ Categories: `faculty`, `phd`, `alumni`.
 - Project thumbnails: `assets/img/projects/{slug}.jpg` (optional)
 - Publication PDFs: `assets/pdf/{journals,conferences,dissertations,tutorials}/`
 
-## Migration scripts
+## Maintenance scripts
 
-One-time and maintenance scripts live in `bin/`:
-
-- `bin/legacy_pubs_to_bib.py` — regenerate BibTeX from `_data/legacy-publications.json`
-- `bin/mirror_pdfs.py` — download PDFs referenced in `papers.bib`
-- `bin/generate_migration_content.py` — regenerate team, projects, and news from legacy JSON
+- `bin/check_pdf_paths.py` — verify every `pdf = {...}` entry in `papers.bib` has a file under `assets/pdf/`
 
 ## Formatting
 

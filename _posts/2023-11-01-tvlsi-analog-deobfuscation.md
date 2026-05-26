@@ -2,6 +2,8 @@
 layout: post
 title: TVLSI Paper on Hidden Costs of Analog Deobfuscation Attacks
 date: 2023-11-01
+inline: true
+related_posts: false
 description: ICE Lab publication in IEEE TVLSI on security analysis of analog circuit obfuscation.
 tags: news
 ---

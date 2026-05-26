@@ -2,6 +2,8 @@
 layout: post
 title: Vaibhav Venugopal Rao Completes Ph.D. on Analog Circuit Security
 date: 2024-03-15
+inline: true
+related_posts: false
 description: Vaibhav Venugopal Rao defended his dissertation on enhancing analog circuit security through obfuscation.
 tags: news
 ---

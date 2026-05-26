@@ -1,11 +1,10 @@
 # ICE Lab Website
 
-**Integrated Circuits & Electronics Lab** - Drexel University
+**Integrated Circuits & Electronics Lab** — Drexel University
 
-[![Deploy site](https://github.com/YOUR_ORG/icelab.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/YOUR_ORG/icelab.github.io/actions/workflows/deploy.yml)
-[![CI](https://github.com/YOUR_ORG/icelab.github.io/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR_ORG/icelab.github.io/actions/workflows/ci.yml)
+Built with [al-folio](https://github.com/alshedivat/al-folio) and deployed automatically via GitHub Actions to GitHub Pages.
 
-Built with [al-folio](https://github.com/alshedivat/al-folio) and deployed automatically via GitHub Actions.
+**Live site:** https://jiwanizakir.github.io/icelab-website/
 
 ---
 
@@ -13,73 +12,56 @@ Built with [al-folio](https://github.com/alshedivat/al-folio) and deployed autom
 
 | Action             | How                                            |
 | ------------------ | ---------------------------------------------- |
-| Add a news item    | Create `_news/YYYY-MM-DD-title.md`             |
-| Add a blog post    | Create `_posts/YYYY-MM-DD-title.md`            |
+| Add a news item    | Create `_posts/YYYY-MM-DD-title.md` (add `inline: true` for homepage) |
+| Add a brief note   | Create `_news/YYYY-MM-DD-title.md`             |
 | Add a publication  | Add BibTeX entry to `_bibliography/papers.bib` |
 | Add a project      | Create `_projects/name.md`                     |
 | Update site config | Edit `_config.yml`                             |
-| Edit team info     | Edit files in `_pages/` and `_data/`           |
+| Edit team info     | Edit files in `_team/`                         |
 
-**All changes auto-deploy when merged to `main`.**
+**All changes auto-deploy when merged to `main`.** See [CONTENT.md](CONTENT.md) for contributor workflows.
 
 ## Local Development
 
 ```bash
 # Using Docker (recommended)
-docker compose pull
 docker compose up
 # Visit http://localhost:8080
 
 # Or native Ruby
 bundle install
 bundle exec jekyll serve
-# Visit http://localhost:4000
+# Visit http://localhost:4000/icelab-website/
 ```
 
 ## Repository Structure
 
 ```
 .
-├── _bibliography/     # BibTeX publications
-│   └── papers.bib
-├── _data/             # YAML data files (CV, socials, repos)
-├── _includes/         # Reusable HTML/Liquid components
-├── _layouts/          # Page templates
-├── _news/             # News items (auto-display on homepage)
-├── _pages/            # Static pages (about, publications, etc.)
-├── _posts/            # Blog posts
-├── _projects/         # Project pages
-├── _sass/             # SCSS stylesheets
-├── assets/            # Images, PDFs, JS, CSS
-├── _config.yml        # Site configuration
-└── .github/
-    ├── workflows/     # CI/CD automation
-    ├── ISSUE_TEMPLATE/
-    ├── PULL_REQUEST_TEMPLATE.md
-    └── CODEOWNERS
+├── _bibliography/papers.bib   # Publications (source of truth)
+├── _data/                     # Site data (featured slider, venues, coauthors)
+├── _includes/                 # Reusable Liquid components
+├── _layouts/                  # Page templates
+├── _news/                     # Optional brief homepage-only announcements
+├── _pages/                    # Static pages (about, publications, etc.)
+├── _posts/                    # Blog / news archive
+├── _projects/                 # Research project pages
+├── _team/                     # Team member profiles
+├── _sass/                     # Stylesheets
+├── assets/                    # Images, PDFs, JS, CSS
+├── _config.yml                # Site configuration
+├── bin/check_pdf_paths.py     # PDF path validation
+└── .github/workflows/         # Deploy + CI
 ```
 
-## CI/CD Pipeline
+## Deployment
 
-| Workflow          | Trigger           | Purpose                                                  |
-| ----------------- | ----------------- | -------------------------------------------------------- |
-| **Deploy**        | Push to `main`    | Build & deploy to GitHub Pages                           |
-| **CI**            | Pull requests     | Build check, link check, format check, BibTeX validation |
-| **Preview**       | Pull requests     | Build preview artifact for review                        |
-| **Citations**     | Mon & Thu 6am UTC | Auto-update Google Scholar citation counts               |
-| **Accessibility** | After deploy      | Axe + Lighthouse audits                                  |
-| **Stale**         | Weekly Sunday     | Auto-close inactive issues/PRs                           |
-| **Update TOCs**   | Push to `main`    | Auto-update markdown table of contents                   |
-| **Render CV**     | CV file changes   | Auto-generate PDF from YAML CV                           |
+Pushes to `main` trigger `.github/workflows/deploy.yml`, which builds the site with Jekyll and publishes `_site/` to the `gh-pages` branch. GitHub Pages serves that branch at `/icelab-website`.
 
-## Contributing
+Pull requests run `.github/workflows/ci.yml` (build, YAML lint, BibTeX validation).
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed instructions.
+## Documentation
 
-## Setup
-
-See [SETUP.md](SETUP.md) for initial repository configuration (branch protection, secrets, etc.).
-
----
-
-Powered by [Jekyll](https://jekyllrb.com/) with the [al-folio](https://github.com/alshedivat/al-folio) theme. Hosted on [GitHub Pages](https://pages.github.com/).
+- [CONTENT.md](CONTENT.md) — adding news, publications, team, projects
+- [CONTRIBUTING.md](CONTRIBUTING.md) — developer setup and PR process
+- [SETUP.md](SETUP.md) — GitHub branch protection and repo settings
