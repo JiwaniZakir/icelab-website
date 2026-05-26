@@ -50,13 +50,17 @@
           display: inline-block;
           background-color: var(--global-theme-color);
           margin-bottom: 0.5rem;
-          color: var(--global-card-bg-color) !important;
+          color: var(--md-on-primary) !important;
+
+          a,
+          div {
+            color: var(--md-on-primary) !important;
+          }
 
           a {
-            color: white;
-
             &:hover {
               text-decoration: none;
+              color: var(--md-secondary-200) !important;
             }
           }
         }
