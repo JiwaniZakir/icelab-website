@@ -50,17 +50,20 @@
           display: inline-block;
           background-color: var(--global-theme-color);
           margin-bottom: 0.5rem;
-          color: var(--md-on-primary) !important;
+          color: #ffffff !important;
 
           a,
-          div {
-            color: var(--md-on-primary) !important;
+          div,
+          .venue-badge__label {
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff;
           }
 
           a {
             &:hover {
               text-decoration: none;
               color: var(--md-secondary-200) !important;
+              -webkit-text-fill-color: var(--md-secondary-200);
             }
           }
         }

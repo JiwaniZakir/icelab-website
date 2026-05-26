@@ -12,11 +12,20 @@ h4,
 h5,
 h6,
 em,
-div,
 li,
 span,
 strong {
   color: var(--global-text-color);
+}
+
+// Let div inherit; venue badges set their own label colors explicitly
+div {
+  color: inherit;
+}
+
+.publications abbr.badge .venue-badge__label,
+.publications abbr.badge div.venue-badge__label {
+  color: #ffffff;
 }
 
 hr {

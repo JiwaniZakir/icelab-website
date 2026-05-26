@@ -5,24 +5,32 @@
     <div class="col col-sm-2 abbr">
       {%- if entry.abbr -%}
         {%- if site.data.venues[entry.abbr] -%}
-          {% assign venue_style = null %}
-          {% if site.data.venues[entry.abbr].color != blank %}
-            {% assign venue_style = site.data.venues[entry.abbr].color | prepend: 'style="background-color:' | append: '"' %}
-          {%- endif -%}
+          {% assign venue_color = site.data.venues[entry.abbr].color | default: '#07294D' %}
+          {% assign badge_text_color = '#ffffff' %}
+          {% assign venue_color_upper = venue_color | upcase %}
+          {% if venue_color_upper contains 'FFC627' or venue_color_upper contains 'FEC500' or venue_color_upper contains 'FFCE12' or venue_color_upper contains 'FFD83D' %}
+            {% assign badge_text_color = '#1f1800' %}
+          {% endif %}
+          {% assign venue_badge_class = 'badge venue-badge rounded w-100' %}
+          {% if badge_text_color != '#ffffff' %}
+            {% assign venue_badge_class = venue_badge_class | append: ' venue-badge--light' %}
+          {% endif %}
+          {% capture venue_style %}style="background-color: {{ venue_color }}; color: {{ badge_text_color }};"{% endcapture %}
+          {% capture label_style %}style="color: {{ badge_text_color }};"{% endcapture %}
           <abbr
-            class="badge rounded w-100"
-            {% if venue_style %}
-              {{ venue_style }}
-            {% endif -%}
+            class="{{ venue_badge_class }}"
+            {{ venue_style }}
           >
             {% if site.data.venues[entry.abbr].url %}
-              <a href="{{ site.data.venues[entry.abbr].url }}">{{ entry.abbr }}</a>
+              <a href="{{ site.data.venues[entry.abbr].url }}" class="venue-badge__label" {{ label_style }}>{{ entry.abbr }}</a>
             {% else %}
-              <div>{{- entry.abbr -}}</div>
+              <div class="venue-badge__label" {{ label_style }}>{{- entry.abbr -}}</div>
             {% endif %}
           </abbr>
         {% else %}
-          <abbr class="badge rounded w-100">{{ entry.abbr }}</abbr>
+          <abbr class="badge venue-badge rounded w-100" style="background-color: #07294D; color: #ffffff;">
+            <div class="venue-badge__label" style="color: #ffffff;">{{ entry.abbr }}</div>
+          </abbr>
         {% endif %}
       {% endif %}
       {% if entry.preview %}
