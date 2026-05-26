@@ -165,8 +165,8 @@ def parse_misc(entry: dict) -> tuple[str, str, str]:
 
 
 def resolve_year(entry: dict) -> int | None:
-    year = entry.get("year")
     venue = entry.get("venue") or ""
+    raw_year = entry.get("year")
     pdf_url = entry.get("pdf_url") or ""
 
     if pdf_url:
@@ -174,22 +174,27 @@ def resolve_year(entry: dict) -> int | None:
         match = re.search(r"_(\d{4})", stem)
         if match:
             return int(match.group(1))
-        match = re.search(r"_(\d{2})$", stem)
+        match = re.search(r"_(\d{2})(?:_|$)", stem)
         if match:
             short_year = int(match.group(1))
             return 2000 + short_year if short_year < 50 else 1900 + short_year
 
-    match = re.search(
+    month_year_match = re.search(
         r"(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{4})",
         venue,
         re.I,
     )
-    if match:
-        return int(match.group(2))
+    month_year = int(month_year_match.group(2)) if month_year_match else None
 
-    if isinstance(year, int) and 1990 <= year <= 2035:
-        return year
-    return year if isinstance(year, int) else None
+    if raw_year and re.search(rf"pp\.\s*{raw_year}\s", venue):
+        return month_year or raw_year
+
+    if month_year:
+        return month_year
+
+    if isinstance(raw_year, int) and 1990 <= raw_year <= 2035:
+        return raw_year
+    return raw_year if isinstance(raw_year, int) else None
 
 
 def normalize_venue(venue: str) -> str:
