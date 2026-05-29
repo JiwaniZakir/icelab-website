@@ -5,7 +5,7 @@ description: Associate Professor | isavidis@coe.drexel.edu
 img: assets/img/team/ioannis-savidis.jpeg
 importance: 1
 category: faculty
-redirect: https://ece.drexel.edu/savidis/
+redirect: https://drexel.edu/engineering/about/faculty-staff/S/savidis-ioannis/
 ---
 
 I was born and raised in Rochester, New York in December, 1982. I enjoy watching, playing, and coaching soccer, reading, chess, tennis, and spending time with my family. My large Greek and Peruvian family, which includes my wife, Ana Lucia, and son, Ioannis Alexander, bring me all the happiness in the world. An interesting fact that many people don't know about me is that, although I was born in Rochester, I did not learn English until my early years in elementary school. My family spoke primarily Greek at home, and therefore, I learned English as a second language.

@@ -27,7 +27,7 @@ The ICE Lab is located in the **Bossone Research Enterprise Center** at Drexel U
       <ul class="contact-card__list">
         <li>
           <span class="contact-card__label">Name</span>
-          <a href="https://ece.drexel.edu/savidis/" rel="external nofollow noopener" target="_blank">Prof. Ioannis Savidis</a>
+          <a href="https://drexel.edu/engineering/about/faculty-staff/S/savidis-ioannis/" rel="external nofollow noopener" target="_blank">Prof. Ioannis Savidis</a>
         </li>
         <li>
           <span class="contact-card__label">Email</span>
