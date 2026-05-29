@@ -90,8 +90,8 @@ def validate_intake(data: dict[str, Any]) -> dict[str, Any]:
         normalized["email"] = _require(data, "email", str)
         normalized["category"] = _require(data, "category", str)
         normalized["bio_markdown"] = _require(data, "bio_markdown", str)
-        if normalized["category"] not in ("faculty", "phd", "alumni"):
-            raise ValueError("category must be faculty, phd, or alumni")
+        if normalized["category"] not in ("faculty", "phd", "masters", "alumni"):
+            raise ValueError("category must be faculty, phd, masters, or alumni")
         normalized["importance"] = int(data.get("importance", 5))
         normalized["photo_path"] = _require(data, "photo_path", str)
 

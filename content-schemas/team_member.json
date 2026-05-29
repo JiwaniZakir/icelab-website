@@ -9,7 +9,7 @@
     "name": { "type": "string" },
     "role": { "type": "string" },
     "email": { "type": "string" },
-    "category": { "enum": ["faculty", "phd", "alumni"] },
+    "category": { "enum": ["faculty", "phd", "masters", "alumni"] },
     "importance": { "type": "integer" },
     "bio_markdown": { "type": "string" },
     "photo_path": { "type": "string" },

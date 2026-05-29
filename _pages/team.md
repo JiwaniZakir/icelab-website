@@ -5,7 +5,7 @@ permalink: /team/
 description: Current and former members of the ICE Lab.
 nav: true
 nav_order: 2
-display_categories: [faculty, phd, alumni]
+display_categories: [faculty, phd, masters, alumni]
 horizontal: false
 ---
 
@@ -23,7 +23,7 @@ Meet the researchers and students driving innovation at the ICE Lab.
       {% elsif category == "phd" %}
         <h2 class="category">PhD Students</h2>
       {% elsif category == "masters" %}
-        <h2 class="category">Masters Students</h2>
+        <h2 class="category">MS Students</h2>
       {% elsif category == "undergraduate" %}
         <h2 class="category">Undergraduate Researchers</h2>
       {% elsif category == "alumni" %}

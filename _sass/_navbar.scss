@@ -207,6 +207,8 @@
 
   .nav-link {
     color: var(--md-navbar-text-muted) !important;
+    font-size: 1rem;
+    line-height: 1;
 
     &:hover {
       color: var(--md-navbar-hover) !important;
