@@ -1,0 +1,54 @@
+version: "2.0"
+
+services:
+  hermes:
+    image: ghcr.io/jiwanizakir/icelab-hermes:0.1.0
+    env:
+      - MESSAGING_CWD=/data/icelab-website
+      - REPO_URL=https://github.com/JiwaniZakir/icelab-website.git
+      - GOOGLE_CHAT_PROJECT_ID=your-gcp-project-id
+      - GOOGLE_CHAT_SUBSCRIPTION_NAME=projects/your-gcp-project-id/subscriptions/hermes-chat-events-sub
+      - GOOGLE_CHAT_SERVICE_ACCOUNT_JSON=/opt/data/google-chat-sa.json
+      - GOOGLE_CHAT_ALLOWED_USERS=you@drexel.edu
+      - GH_TOKEN=replace-me
+      - OPENROUTER_API_KEY=replace-me
+    params:
+      storage:
+        hermes-data:
+          mount: /opt/data
+        website-repo:
+          mount: /data/icelab-website
+
+profiles:
+  compute:
+    hermes:
+      resources:
+        cpu:
+          units: 1.0
+        memory:
+          size: 2Gi
+        storage:
+          - size: 1Gi
+          - name: hermes-data
+            size: 5Gi
+            attributes:
+              persistent: true
+              class: beta3
+          - name: website-repo
+            size: 2Gi
+            attributes:
+              persistent: true
+              class: beta3
+
+  placement:
+    akash:
+      pricing:
+        hermes:
+          denom: uakt
+          amount: 100
+
+deployment:
+  hermes:
+    akash:
+      profile: hermes
+      count: 1
