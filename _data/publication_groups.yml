@@ -1,0 +1,19 @@
+# Display order for /publications/ (matches drexel-ice reference site).
+- id: tutorials
+  title: Tutorials
+- id: book
+  title: Book
+- id: book_chapter
+  title: Book Chapter
+- id: dissertations
+  title: Dissertations
+- id: journal_papers
+  title: Journal Papers
+- id: conference_papers
+  title: Conference Papers
+- id: workshop_presentations
+  title: Workshop Presentations
+- id: conference_presenter
+  title: Conference Presenter
+- id: technical_industrial
+  title: Technical Industrial Presentations

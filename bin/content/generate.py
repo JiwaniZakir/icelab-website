@@ -49,6 +49,31 @@ def format_authors_bib(authors: list[str]) -> str:
     return " and ".join(escape_bib(a.strip()) for a in authors)
 
 
+def infer_ice_type(entry_type: str, data: dict[str, Any]) -> str:
+    note = str(data.get("note", ""))
+    howpublished = str(data.get("howpublished", "")).lower()
+    if "tutorial" in note.lower():
+        return "tutorials"
+    mapping = {
+        "book": "book",
+        "incollection": "book_chapter",
+        "phdthesis": "dissertations",
+        "article": "journal_papers",
+        "inproceedings": "conference_papers",
+    }
+    if entry_type in mapping:
+        return mapping[entry_type]
+    if entry_type == "misc":
+        if any(x in howpublished for x in ("to qualcomm", "to samsung", "to kodak", "cisco", "award number")):
+            return "technical_industrial"
+        if any(x in howpublished for x in ("technology showcase", "lincoln laboratory", "best paper award contest")):
+            return "workshop_presentations"
+        if howpublished.startswith("at the") or " at the " in howpublished:
+            return "conference_presenter"
+        return "workshop_presentations"
+    return "conference_papers"
+
+
 def build_bib_entry(data: dict[str, Any]) -> tuple[str, str]:
     key = data.get("bib_key") or make_bib_key(data["authors"], data["year"], data["title"])
     lines = [f"@{data['entry_type']}{{{key},"]
@@ -74,6 +99,11 @@ def build_bib_entry(data: dict[str, Any]) -> tuple[str, str]:
         lines.append(f"  pdf = {{{normalize_pdf_bib_path(data['pdf_file'])}}},")
     if data.get("selected"):
         lines.append("  selected = {true},")
+    if data.get("note"):
+        lines.append(f"  note = {{{escape_bib(str(data['note']))}}},")
+
+    ice_type = data.get("ice_type") or infer_ice_type(entry_type, data)
+    lines.append(f"  ice_type = {{{ice_type}}},")
 
     if lines[-1].endswith(","):
         lines[-1] = lines[-1][:-1]

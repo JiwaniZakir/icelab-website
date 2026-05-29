@@ -78,7 +78,7 @@ python3 bin/content/cli.py publish $INTAKE
 | Homepage & **News** (`/news/`) | `_news/` briefs + `_posts/` with `inline: true` (homepage table) |
 | **Blog archive** (`/blog/`) | Full articles only — `_posts/` without `inline: true` still appear here; use **News Brief** or omit `inline` when you do not want a homepage line |
 | Homepage featured slider | `_data/featured_slides.yml` |
-| Publications list | `_bibliography/papers.bib` |
+| Publications list | `_bibliography/papers.bib` (grouped on `/publications/` by `ice_type`) |
 | PDF reprints | `assets/pdf/` |
 | Photos | `assets/img/team/`, `assets/img/research/`, `assets/img/projects/` |
 

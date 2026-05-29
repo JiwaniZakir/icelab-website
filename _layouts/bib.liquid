@@ -1,7 +1,9 @@
 ---
 ---
-<div class="row">
-  {% if site.enable_publication_thumbnails %}
+{% assign pub_compact = page.publications_compact | default: false %}
+{% assign show_pub_thumbnails = site.enable_publication_thumbnails and pub_compact == false %}
+<div class="row pub-entry" data-pub-year="{{ entry.year }}" data-ice-type="{{ entry.ice_type | default: 'conference_papers' }}">
+  {% if show_pub_thumbnails %}
     <div class="col col-sm-2 abbr">
       {%- if entry.abbr -%}
         {%- if site.data.venues[entry.abbr] -%}
@@ -54,7 +56,7 @@
   {% endif %}
 
   <!-- Entry bib key -->
-  <div id="{{ entry.key }}" class="{% if site.enable_publication_thumbnails %}col-sm-8{% else %}col-sm-10{% endif %}">
+  <div id="{{ entry.key }}" class="{% if pub_compact %}col-12{% elsif show_pub_thumbnails %}col-sm-8{% else %}col-sm-10{% endif %}">
     <!-- Title -->
     <div class="title">{{ entry.title }}</div>
     <!-- Author -->

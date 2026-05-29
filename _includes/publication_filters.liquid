@@ -1,0 +1,29 @@
+{% if site.bib_search %}
+  <div class="publications-toolbar">
+    <div class="pub-filter-types" role="toolbar" aria-label="Filter publications by type">
+      <button type="button" class="pub-filter-btn active" data-ice-type="all">All</button>
+      {% for group in site.data.publication_groups %}
+        <button type="button" class="pub-filter-btn" data-ice-type="{{ group.id }}">{{ group.title }}</button>
+      {% endfor %}
+    </div>
+
+    <div class="pub-filter-controls">
+      <label class="pub-filter-year-label" for="pub-year-filter">Year</label>
+      <select id="pub-year-filter" class="pub-filter-year" aria-label="Filter by year">
+        <option value="">All years</option>
+      </select>
+
+      <input
+        type="text"
+        id="bibsearch"
+        spellcheck="false"
+        autocomplete="off"
+        class="search bibsearch-form-input pub-text-filter"
+        placeholder="Search titles and authors"
+      >
+    </div>
+  </div>
+
+  <script src="{{ '/assets/js/bibsearch.js' | relative_url | bust_file_cache }}" type="module"></script>
+  <script src="{{ '/assets/js/publication-filters.js' | relative_url | bust_file_cache }}" defer></script>
+{% endif %}
