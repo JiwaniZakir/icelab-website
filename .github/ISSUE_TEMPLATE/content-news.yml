@@ -1,11 +1,11 @@
 name: 📰 Add News Post
-description: Homepage announcement and blog post (opens a draft PR for review)
+description: Optional homepage line plus full blog article (opens a draft PR for review)
 labels: ["content", "content:news_post"]
 body:
   - type: markdown
     attributes:
       value: |
-        Submit a **news post** for the ICE Lab website. Fill in the fields below — no JSON required.
+        Submit a **news post** with a full blog page at `/blog/…`. Check “Show on homepage” to also list it on `/news/` and the homepage table.
         A bot validates your submission and opens a **draft pull request**. Nothing goes live until a maintainer merges.
 
   - type: input
@@ -59,7 +59,7 @@ body:
     attributes:
       label: Show on homepage
       options:
-        - label: Show on homepage news table
+        - label: Also show on homepage and /news/ (inline announcement)
           required: false
     validations:
       required: false

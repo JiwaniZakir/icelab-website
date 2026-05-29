@@ -4,10 +4,10 @@ This guide is for lab members who want to add news, team profiles, projects, or 
 
 ## Recommended: GitHub issue forms (no JSON, no LLM)
 
-1. Open **[New Issue](https://github.com/jiwanizakir/icelab-website/issues/new/choose)** on the repo.
+1. Open **[New Issue](https://github.com/JiwaniZakir/icelab-website/issues/new/choose)** on the repo.
 2. Choose the right template:
-   - **Add News Post** — homepage announcement + blog entry
-   - **Add News Brief** — short homepage-only note
+   - **Add News Post** — optional homepage line + **full blog article** (use when the story needs its own page)
+   - **Add News Brief** — homepage / news page only (no blog page)
    - **Add Publication** — BibTeX + publications list
    - **Add Team Member** — team profile
    - **Add Research Project** — project page
@@ -75,9 +75,9 @@ python3 bin/content/cli.py publish $INTAKE
 | Research overview | `_pages/research.md` |
 | Project cards | `_projects/*.md` |
 | Team page | `_team/*.md` |
-| Homepage announcements | `_posts/` with `inline: true`, or `_news/` for brief-only items |
+| Homepage & **News** (`/news/`) | `_news/` briefs + `_posts/` with `inline: true` (homepage table) |
+| **Blog archive** (`/blog/`) | Full articles only — `_posts/` without `inline: true` still appear here; use **News Brief** or omit `inline` when you do not want a homepage line |
 | Homepage featured slider | `_data/featured_slides.yml` |
-| Full news archive (blog) | `_posts/YYYY-MM-DD-title.md` |
 | Publications list | `_bibliography/papers.bib` |
 | PDF reprints | `assets/pdf/` |
 | Photos | `assets/img/team/`, `assets/img/research/`, `assets/img/projects/` |

@@ -1,9 +1,9 @@
 ---
 layout: default
 permalink: /blog/
-title: news
-nav: true
-nav_order: 7
+title: blog
+nav: false
+# Blog archive (paginated _posts). Main nav "news" points to /news/ — see _pages/news.md.
 pagination:
   enabled: true
   collection: posts
@@ -26,6 +26,7 @@ pagination:
   <div class="header-bar">
     <h1>{{ site.blog_name }}</h1>
     <h2>{{ site.blog_description }}</h2>
+    <p class="mt-2"><a href="{{ '/news/' | relative_url }}">&larr; Lab announcements (news page)</a></p>
   </div>
   {% endif %}
 
