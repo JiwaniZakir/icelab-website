@@ -1,5 +1,9 @@
 name: CI - Pull Request Checks
 
+# NOTE: org Actions policy only permits GitHub-owned actions (actions/*) and
+# local composite actions; third-party actions cause startup_failure.
+# Tooling is therefore invoked directly (Docker images, pip packages).
+
 on:
   pull_request:
     branches: [main]
@@ -11,6 +15,9 @@ permissions:
 concurrency:
   group: ci-${{ github.head_ref }}
   cancel-in-progress: true
+
+env:
+  JEKYLL_IMAGE: amirpourmand/al-folio:v0.16.3
 
 jobs:
   # ── Build Validation (REQUIRED) ────────────────────────────────────────
@@ -24,27 +31,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: "3.3.5"
-          bundler-cache: true
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.13"
-
-      - name: Install system dependencies
-        run: sudo apt-get update && sudo apt-get install -y imagemagick
-
-      - name: Install Python dependencies
-        run: pip3 install --upgrade nbconvert
-
-      - name: Build site
-        env:
-          JEKYLL_ENV: production
-        run: bundle exec jekyll build
+      - name: Build site (Jekyll in Docker)
+        run: |
+          docker run --rm \
+            --user "$(id -u):$(id -g)" \
+            -e HOME=/tmp \
+            -e JEKYLL_ENV=production \
+            -v "$PWD:/srv/jekyll" \
+            "$JEKYLL_IMAGE" \
+            bash -c "cd /srv/jekyll && bundle exec jekyll build"
+          test -f _site/index.html
 
       - name: Purge unused CSS
         run: |
@@ -69,26 +65,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Link Checker
-        uses: lycheeverse/lychee-action@v2.0.2
-        with:
-          fail: false # Advisory only - don't block PRs
-          jobSummary: true
-          args: >
-            --user-agent 'curl/7.54'
-            --exclude-path README.md
-            --exclude-path _pages/404.md
-            --exclude-path _pages/blog.md
-            --exclude '%7B%7B'
-            --exclude 'reddit\.com'
-            --exclude 'unsplash\.com'
-            --accept 403,401,429
-            --timeout 30
-            --max-retries 3
-            --no-progress
+      - name: Link Checker (lychee via Docker, advisory)
+        continue-on-error: true
+        run: |
+          docker run --rm -v "$PWD:/input" -w /input \
+            -e GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}" \
+            lycheeverse/lychee:latest \
+            --user-agent 'curl/7.54' \
+            --exclude-path README.md \
+            --exclude-path _pages/404.md \
+            --exclude-path _pages/blog.md \
+            --exclude '%7B%7B' \
+            --exclude 'reddit\.com' \
+            --exclude 'unsplash\.com' \
+            --accept 403,401,429 \
+            --timeout 30 \
+            --max-retries 3 \
+            --no-progress \
             './**/*.md' './**/*.html'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   # ── YAML Validation (REQUIRED) ─────────────────────────────────────────
   # Catches broken front-matter in _config.yml and data files
@@ -101,23 +95,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Validate YAML
-        uses: ibiqlik/action-yamllint@v3
-        with:
-          file_or_dir: |
-            _config.yml
-            _data/*.yml
-          config_data: |
-            extends: default
-            rules:
-              line-length:
-                max: 300
-                allow-non-breakable-inline-mappings: true
-              truthy:
-                check-keys: false
-              document-start: disable
-              comments:
-                min-spaces-from-content: 1
+      - name: Validate YAML (yamllint)
+        run: |
+          pip install yamllint
+          cat > /tmp/yamllint.yml <<'EOF'
+          extends: default
+          rules:
+            line-length:
+              max: 300
+              allow-non-breakable-inline-mappings: true
+            truthy:
+              check-keys: false
+            document-start: disable
+            comments:
+              min-spaces-from-content: 1
+          EOF
+          yamllint -c /tmp/yamllint.yml _config.yml _data/*.yml
 
   # ── BibTeX Validation (REQUIRED) ───────────────────────────────────────
   # Catches broken bibliography entries that would break the publications page

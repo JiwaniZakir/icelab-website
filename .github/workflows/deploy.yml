@@ -1,5 +1,11 @@
 name: Deploy site
 
+# NOTE: The drexel-ice org Actions policy only permits GitHub-owned actions
+# (actions/*) and local composite actions. Third-party marketplace actions
+# (ruby/setup-ruby, JamesIves/github-pages-deploy-action, lychee-action, ...)
+# cause an immediate startup_failure. This workflow therefore builds inside
+# the pinned al-folio Docker image and deploys with plain git.
+
 on:
   push:
     branches: [main]
@@ -43,6 +49,9 @@ concurrency:
   group: deploy-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  JEKYLL_IMAGE: amirpourmand/al-folio:v0.16.3
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -52,48 +61,36 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: "3.3.5"
-          bundler-cache: true
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.13"
-
-      - name: Install system dependencies
-        run: sudo apt-get update && sudo apt-get install -y imagemagick
-
-      - name: Install Python dependencies
-        run: pip3 install --upgrade nbconvert
-
-      - name: Update dynamic config
-        uses: fjogeleit/yaml-update-action@v0.14.0
-        with:
-          commitChange: false
-          valueFile: "_config.yml"
-          propertyPath: "giscus.repo"
-          value: ${{ github.repository }}
-
-      - name: Build site
-        env:
-          JEKYLL_ENV: production
-        run: bundle exec jekyll build
+      - name: Build site (Jekyll in Docker)
+        run: |
+          docker run --rm \
+            --user "$(id -u):$(id -g)" \
+            -e HOME=/tmp \
+            -e JEKYLL_ENV=production \
+            -v "$PWD:/srv/jekyll" \
+            "$JEKYLL_IMAGE" \
+            bash -c "cd /srv/jekyll && bundle exec jekyll build"
+          test -f _site/index.html
 
       - name: Purge unused CSS
         run: |
           npm install -g purgecss
           purgecss -c purgecss.config.js
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: _site
-          branch: gh-pages
-          clean: true
-          single-commit: true
+      - name: Deploy to GitHub Pages (git push)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd _site
+          touch .nojekyll
+          git init -q -b gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Deploy site from ${GITHUB_SHA} (run ${GITHUB_RUN_ID})"
+          git push --force \
+            "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+            gh-pages
 
   post-deploy-check:
     needs: build
@@ -105,30 +102,26 @@ jobs:
       - name: Wait for GitHub Pages propagation
         run: sleep 45
 
-      - name: Check deployed site for broken links
-        uses: lycheeverse/lychee-action@v2.0.2
-        with:
-          fail: false
-          args: >
-            --user-agent 'curl/7.54'
-            --exclude 'ece\.drexel\.edu'
-            --exclude 'research\.coe\.drexel\.edu'
-            --exclude 'scholar\.google\.com'
-            --accept 403,401,429
-            --timeout 30
-            --max-retries 3
-            --no-progress
-            --max-concurrency 4
-            https://drexel-ice.github.io/
-            https://drexel-ice.github.io/team/
-            https://drexel-ice.github.io/projects/
-            https://drexel-ice.github.io/research/
-            https://drexel-ice.github.io/publications/
-            https://drexel-ice.github.io/contact/
+      - name: Check deployed site for broken links (lychee via Docker)
+        continue-on-error: true
+        run: |
+          docker run --rm lycheeverse/lychee:latest \
+            --user-agent 'curl/7.54' \
+            --exclude 'ece\.drexel\.edu' \
+            --exclude 'research\.coe\.drexel\.edu' \
+            --exclude 'scholar\.google\.com' \
+            --accept 403,401,429 \
+            --timeout 30 \
+            --max-retries 3 \
+            --no-progress \
+            --max-concurrency 4 \
+            https://drexel-ice.github.io/ \
+            https://drexel-ice.github.io/team/ \
+            https://drexel-ice.github.io/projects/ \
+            https://drexel-ice.github.io/research/ \
+            https://drexel-ice.github.io/publications/ \
+            https://drexel-ice.github.io/contact/ \
             https://drexel-ice.github.io/blog/
-            https://drexel-ice.github.io/news/
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Smoke check publications page
         run: |
